@@ -68,9 +68,7 @@ public_users.post("/register", (req, res) => {
 
 // Task 10: Get the book list available in the shop using async-await
 public_users.get("/async", async (req, res) => {
-  // Changed endpoint to avoid conflict with root
   try {
-    // Simulate an asynchronous operation, e.g., fetching from a database
     const response = await new Promise((resolve) => {
       resolve({ data: books }); // Simulating a delay
     });
@@ -84,7 +82,6 @@ public_users.get("/async", async (req, res) => {
 public_users.get("/async/isbn/:isbn", async (req, res) => {
   try {
     const { isbn } = req.params;
-    // Simulate an asynchronous operation
     const response = await new Promise((resolve) => {
       if (books[isbn]) {
         resolve({ data: books[isbn] });
@@ -126,7 +123,6 @@ public_users.get("/async/author/:author", async (req, res) => {
 public_users.get("/async/title/:title", async (req, res) => {
   try {
     const { title } = req.params;
-    // Simulate an asynchronous operation
     const response = await new Promise((resolve) => {
       const result = Object.values(books).filter(
         (book) => book.title === title
